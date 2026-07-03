@@ -65,6 +65,8 @@ A2 (trigger) 是拆书里最难的环节。一个 skill 做得再漂亮,trigger 
 
 **没有诱饵测试的 skill 一律打回**。因为只测 positive case,skill 总会看起来"很好",但实际部署后会乱激活。
 
+**跨 skill 混淆测试 (硬性要求)**: 诱饵中至少 1 条必须是"应该触发同书另一个 skill"的 prompt。同一本书拆出的 10+ 个 skill 之间互相抢调用,是部署后最常见的真实故障 — 只测"完全无关的场景"发现不了它。盲测时把整包所有 skill 的 name + description 列表给 sub-agent,让它做"该激活哪一个"的选择题,而不只是"要不要激活这一个"的判断题。
+
 ## 执行流程
 
 1. 对每个 skill,按模板写 `test-prompts.json`
@@ -90,9 +92,6 @@ A2 (trigger) 是拆书里最难的环节。一个 skill 做得再漂亮,trigger 
 - `<skill-dir>/test-prompts.json` — darwin 兼容格式
 - `<skill-dir>/test-results.md` — 本次测试的通过率和失败分析 (审计用)
 
-## 与 darwin-skill 的交接
+## 下一步
 
-所有 skill 全部通过后,告诉用户:
-> 已完成。如需持续进化,可以喂给 darwin-skill:
-> `darwin evolve books/<slug>/`
-> 它会用这里的 test-prompts.json 做 ratcheting 自动进化。
+所有 skill 全部通过后,进入阶段 5 (交付),见 `07-stage5-deliver.md`: 生成面向读者的 DIGEST.md 精华长文,并把 skill 安装到用户的 skills 目录 — 之后才向用户提 darwin-skill 自动进化。

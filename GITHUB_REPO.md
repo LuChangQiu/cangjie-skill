@@ -2,7 +2,7 @@
 
 - Repository name: `cangjie-skill`
 - Default README: `README.md`
-- Description: `A generator workflow for turning books into reusable AI skills, with extraction, validation, templating, and skill-graph construction.`
+- Description: `A generator workflow for turning books, long videos, podcasts, and courses into reusable AI skills, with extraction, validation, templating, and skill-graph construction.`
 - Topics:
   - `ai-skills`
   - `knowledge-distillation`

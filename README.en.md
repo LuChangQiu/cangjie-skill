@@ -21,14 +21,15 @@ So cangjie-skill has one clear goal: **distill every book worth distilling**, tu
 
 ## How It Works
 
-cangjie-skill uses the **RIA-TV++** pipeline to transform a book from raw text into a set of structured skills. The process has six stages:
+cangjie-skill uses the **RIA-TV++** pipeline to transform a book from raw text into a set of structured skills. The process has seven stages:
 
 1. **Whole-Book Comprehension (Adler Analysis)** — Structural, interpretive, critical, and applicability analysis using Mortimer Adler's method, producing `BOOK_OVERVIEW.md`
 2. **Parallel Extraction** — Five specialized extractors (frameworks, principles, cases, counter-examples, glossary) run simultaneously to pull candidate units from the source text
 3. **Triple Verification** — Each candidate must pass three checks: at least 2 independent supporting passages (cross-domain), ability to answer a novel question (predictive power), and non-commonsense uniqueness. Pass rate is typically 25-50%
 4. **RIA++ Construction** — Verified content is structured into six dimensions: R (original quote) / I (own-words reconstruction) / A1 (book cases) / A2 (future trigger scenarios) / E (executable steps) / B (boundaries & blind spots)
 5. **Zettelkasten Linking** — Dependency, contrast, and composition relationships between skills are identified, producing `INDEX.md` with a reference graph
-6. **Pressure Testing** — Test prompts including bait questions are designed for each skill; failures go back for full reconstruction
+6. **Pressure Testing** — Test prompts including bait questions (and cross-skill confusion tests) are designed for each skill; failures go back for full reconstruction
+7. **Delivery** — A reader-facing `DIGEST.md` long-form digest is generated (skip the book, read the essence), and tested skills are installed into the Claude Code / Cursor skills directory so they can actually be invoked
 
 The name RIA-TV++ breaks down as:
 - **RIA**: From Zhao Zhou's bookmark method (Reading / Interpretation / Appropriation)
@@ -51,7 +52,7 @@ The name RIA-TV++ breaks down as:
 
 **Example Output**
 
-> The result will not be one summary document. It will be a multi-skill repository with `BOOK_OVERVIEW.md`, `INDEX.md`, multiple `*/SKILL.md` files, and `test-prompts.json` for trigger testing.
+> The result will not be one summary document. It will be a multi-skill repository with `BOOK_OVERVIEW.md`, `INDEX.md`, a reader-facing `DIGEST.md`, a `GLOSSARY.md`, multiple `*/SKILL.md` files, and `test-prompts.json` for trigger testing.
 
 ### Example 2: Structured Reuse, Not Compression
 
